@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details</title>
+    <style>
+        body{
+            background-color: rgb(134, 150, 254);
+        }
+        .head{
+            border: 4px solid white;
+            background-image: linear-gradient(to right,rgb(160, 165, 216),rgb(91, 105, 151),rgb(6, 35, 114));
+            padding: 2px;
+            position: absolute;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-size: 1em;
+            width: 98%;
+            top: 0em;
+            font-weight: bolder;
+        }
+        .midpanel{
+            border: 4px solid white;
+            position: relative;
+            top: 4em;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 120%;
+            padding: 10px;
+            width: 98%
+            }
+        .btn{
+            background-color: rgb(113, 89, 158);
+            color: white;
+            padding: 3px 14px;
+            border: 2px solid rgb(99, 91, 91);
+            border-radius: 10px;
+            font-size: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+                .btn:hover{
+                    background-color: rgb(119, 17, 179);
+                }
+                .image{
+                    position: absolute;
+                    left: 1em;
+                    top: 7em
+                }
+                #img{
+                    height:150px;
+                }
+                #img2{
+                    height: 164px;
+                    position: absolute;
+                    top: 21em;
+                    left: 2px
+                }
+                .dv{
+                    font-size: small;
+                    position: absolute;
+                    top: 37em;
+                    left: 1em;
+                    width: 98%;
+                    height: 20%;
+                }
+                #p{
+                    font-size: small;
+                    position: absolute;
+                    top: 7em;
+                    left: 47em;
+                }
+                span.formerror {
+                    display: none;
+                    color: red;
+                    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-size: small;
+                }
+
+                input.invalid ~ span.formerror {
+                    display: inline;
+                }
+    </style>
+</head>
+<body>
+    <div id="" class="head">
+        <h2>Please enter the details.</h2>
+    </div>
+    <div id="" class="midpanel">
+        <form action="/enterdetails" method="POST" role="form" enctype="application/x-www-form-urlencoded">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="enter your name" pattern="^[A-Za-z ]+$" required>
+        <span class="formerror">Enter a valid name</span>
+        <br/>
+        <br/>
+        <label for="phone_number">Mobile:</label>
+        <input type="text" name="phone_number" placeholder="enter your mobile number" minlength="10" maxlength="10"  pattern="^[0-9]+$" required/>
+        <span class="formerror">phone number should be of 10 digits</span>
+        <br/>
+        <br/>
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="enter your password" minlength="4"  required/>
+        <span class="formerror">password must be at least of length 4</span>
+        <br/>
+        <br/>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" placeholder="enter your password" minlength="4" />
+        <span id="confirmError" class="formerror"></span>
+        <br />
+        <br />
+        <button id="btnsubmit" class="btn" onclick="submit">Submit</button>
+        </form>
+    </div>
+    <section class="image">
+        <img src="../photos/symbol.jpg" alt="official symbol of dentistry" id="img">
+        <img src="../photos/symbol2.jpg" alt="medical symbol of dentistry" id="img2">
+    </section>
+    <div class="dv">
+        <p id="p">developed by ABM</p>
+    </div>
+    <script>
+        function submit() {
+  const passwordInput = document.getElementsByName('password')[0];
+  const confirmInput = document.getElementsByName('confirm_password')[0];
+  const confirmError = document.querySelector('#confirmError');
+  confirmInput.addEventListener('input', () => {
+    if (passwordInput.value !== confirmInput.value) {
+      confirmError.textContent = "Password and confirm password should match";
+    } else {
+      confirmError.textContent = "";
+    }
+  });
+}
+        document.forms.index.addEventListener('submit', e => {
+        e.preventDefault();
+         console.log('Submitting the form!');
+        });
+
+        document.forms.index.addEventListener('invalid', e => {
+        e.preventDefault();
+        e.target.classList.add('invalid');
+        }, true);
+
+        document.forms.index.addEventListener('input', e => {
+        e.preventDefault();
+        e.target.classList.remove('invalid');
+        });
+    </script>
+</body>
+</html>

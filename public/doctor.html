@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign In </title>
+    <style>
+        body{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(../photos/bg_dr.webp);    
+        }
+.sign-in{
+    text-align:center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute ;
+    display: block;
+    text-align: center;
+    padding-top: 100px;
+    width: 100%;
+    border-radius: 2px;  
+    }
+        .btn{
+                    margin: 0px;
+                    background-color: rgb(78, 184, 192);
+                    color: white;
+                    padding: 3px 14px;
+                    border: 2px solid rgb(99, 91, 91);
+                    border-radius: 10px;
+                    font-size: 12px;
+                    margin-top: 10px;
+                    cursor: pointer;
+                }
+                .btn:hover{
+                    background-color: rgb(245, 190, 190);
+                }
+                .head{
+                    position: absolute;
+                    left : 30em;
+                }
+    </style>
+</head>
+<body>
+    <div id="" class="head">
+        <h2>Please enter your authentication details.</h2>
+    </div>
+    <div class="sign-in">
+        <form action="/doctor" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="name">Name:</label> 
+            <input type="text" name="name" placeholder="enter your name">
+            <br/>
+            <br/>
+            <label for="phone_number">Mobile:</label>
+            <input type="text" name="phone_number" placeholder="enter your mobile number">
+            <br/>
+            <br/>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="enter your password" />
+            <br />
+            <br />
+            <button id="btnsubmit" class="btn" onclick="submit"><a href="\table\">Submit</a></button>
+        </form>
+    </div>
+</body>
+</html>

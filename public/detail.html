@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Infromation</title>
+    <style>
+        body{
+            background-image: url(../photos/detail_bg.jpg);
+            background-repeat: no-repeat;
+            margin-top: 7em;;
+            background-size:cover;
+            text-align: center;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: larger;
+        }
+        span.formerror {
+                    display: none;
+                    color: red;
+                    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-size: small;
+                }
+
+                input.invalid ~ span.formerror {
+                    display: inline;
+                }
+    </style>
+</head>
+<body>
+    <h2>Specify you details!</h2>
+    <form action="/detail" method="POST" role="form"  name="detail" enctype="application/x-www-form-urlencoded">
+        <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="enter your name" required minlength="3">
+            <span class="formerror">length of name of too short</span>
+        <br/>
+        <br/>
+        <label for="age">Age:</label>
+            <input type="number" name="age" placeholder="enter your name" required pattern="[0-9]{10}">
+            <span class="formerror">invalid age</span>
+        <br/>
+        <br/>
+            <legend>Specify your gender please!</legend>
+            <br>
+            <label for="gender">Female</label>
+            <input type="radio" name="gender" value="female">
+            <label for="gender">Male</label>
+            <input type="radio" name="gender" value="male">
+            <label for="gender">Transgender</label>
+            <input type="radio" name="gender" value="transgender">
+            <span class="formerror"></span>
+        <br/>
+        <br/>
+        <label for="blood_group">Blood Group:</label>
+            <select type="text" name="blood_group" placeholder="enter your blood-group" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>     
+        <br/>
+        <br/>
+        <label for="phone_number">Mobile:</label>
+            <input type="text" name="phone_number" placeholder="enter your mobile number" required pattern="[0-9]{10}">
+            <span class="formerror">phone number should be of 10 digits</span>
+        <br/>
+        <br/>
+        <label for="med_his">Medical History:</label>
+            <input type="text" name="medical_history" placeholder="any medical history?" >
+            <span class="formerror"></span>
+        <br/>
+        <br/> 
+        <label for="date">Date:</label>
+            <input type="date" name="date" placeholder="enter the date" required>
+            <span class="formerror">Invalid Date</span>
+           <br/>
+            <br/>   
+            <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="enter your password" minlength="4"  required/>
+        <span class="formerror">password must be at least of length 4</span>
+        <br/>
+        <br/>
+        <button id="btnsubmit" class="btn" onclick="submit">Submit</button>
+    <script>
+              document.forms.index.addEventListener('submit', e => {
+  e.preventDefault();
+  console.log('Submitting the form!');
+});
+document.forms.index.addEventListener('invalid', e => {
+  e.preventDefault();
+  e.target.classList.add('invalid');
+}, true);
+document.forms.index.addEventListener('input', e => {
+  e.preventDefault();
+  e.target.classList.remove('invalid');
+});
+    </script>
+</form>
+</body>
+</html>
